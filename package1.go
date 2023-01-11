@@ -29,6 +29,7 @@ func GetAccount(ID string) (string,error) {
 		log.Println(err)
 		return "",err
 	}
+	
 	log.Printf("\nResult:%+v", res)
 	for ind:=0;ind<len(res.Balance);ind++ {
 		if res.Balance[ind].Asset == ID {

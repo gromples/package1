@@ -29,7 +29,8 @@ func GetEthID() (string,error) {
 		log.Println(err)
 		return "",err
 	}
-	log.Printf("\nMy Balance:%+v", res.Balance[1])
+	log.Printf("\nResult:%+v", res)
+//	log.Printf("\nMy Balance:%+v", res.Balance[1])
 	if res != nil && len(res.Balance) > 0 {
 		return res.Balance[1].AccountId,nil
 	}

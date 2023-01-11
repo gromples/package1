@@ -15,7 +15,7 @@ var (
 	debug        = flag.Bool("debug", false, "Enable debug mode")
 )
 
-func GetEthID() (string,error) {
+func GetAccount(ID string) (string,error) {
 	flag.Parse()
 
 	cl := luno.NewClient()
@@ -30,6 +30,11 @@ func GetEthID() (string,error) {
 		return "",err
 	}
 	log.Printf("\nResult:%+v", res)
+	for ind:=0;ind<len(res.Balance);ind++ {
+		if res.Balance[ind].Asset == ID {
+			return res.Balance[ind].AccountId,nil
+		}
+	}
 //	log.Printf("\nMy Balance:%+v", res.Balance[1])
 	if res != nil && len(res.Balance) > 0 {
 		return res.Balance[1].AccountId,nil
